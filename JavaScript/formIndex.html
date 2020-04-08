@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="GET" action="/user">
+      <input type="text" name="id" placeholder="id를 입력하세요" />
+      <input type="password" name="pw" placeholder="pw를 입력하세요" />
+      <button>submit</button>
+
+      //user?id=ddd&pw=ddd GET방식은 이처럼 서버에 전달.id/pw가 다보이는게
+      싫으면 POST방식 사용
+    </form>
+  </body>
+</html>
