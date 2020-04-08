@@ -10,3 +10,14 @@ function includes(array, target) {
   }
   return false;
 }
+
+//혹은 이렇게 구성
+/*
+function includes(array, searchElement) {
+  for (let value of array) {
+    if (searchElement === value) {
+      return true;
+    }
+  }
+}
+*/

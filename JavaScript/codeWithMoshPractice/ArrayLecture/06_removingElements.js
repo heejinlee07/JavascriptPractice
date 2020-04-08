@@ -20,7 +20,7 @@ console.log(numbers); //[2,3]
 //removing an element somewhere in the middle.
 const numbers2 = [1, 2, 3, 4];
 
-numbers2.splice(1, 2); //[2,3]
+numbers2.splice(1, 2);
 console.log(numbers2); //[1,4]
 
 /* 
