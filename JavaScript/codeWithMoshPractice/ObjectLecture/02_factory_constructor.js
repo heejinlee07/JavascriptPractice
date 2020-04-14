@@ -1,4 +1,4 @@
-//Factory function -> produce object
+//REMIND: Factory function -> produce object
 //camel notation
 
 function createCircle(radius) {
@@ -8,7 +8,7 @@ function createCircle(radius) {
     //object 내부의 function은 function 키워드를 생략한다.
     draw() {
       console.log("draw");
-    }
+    },
   };
 }
 
@@ -18,11 +18,11 @@ console.log(circle1);
 const circle2 = createCircle(2);
 console.log(circle2);
 
-//constructor function -> pascal notation
+//REMIND: constructor function -> pascal notation
 
 function Circle(radius) {
   this.radius = radius;
-  this.draw = function() {
+  this.draw = function () {
     console.log("draw");
   };
 }

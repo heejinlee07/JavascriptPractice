@@ -31,3 +31,10 @@ const titles = movies
   .map((m) => m.title);
 
 console.log(titles);
+
+/**
+ * NOTE:
+ * sort의 기준점은 없는데
+ * 데이터의 순서를 바꾸고 싶을 때
+ * reverse
+ */
