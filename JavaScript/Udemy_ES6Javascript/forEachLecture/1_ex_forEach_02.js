@@ -12,3 +12,5 @@ images.forEach((image) => {
   const calculate = image.height * image.width;
   areas.push(calculate);
 });
+
+console.log(areas);

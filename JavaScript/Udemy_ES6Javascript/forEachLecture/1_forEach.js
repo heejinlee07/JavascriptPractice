@@ -8,3 +8,7 @@ for (var i = 0; i < colors.length; i++) {
 colors.forEach(function (color) {
   console.log(color);
 });
+
+//using arrow function
+colors.forEach((color) => console.log(color));
+colors.forEach((color) => console.log("color: " + color));

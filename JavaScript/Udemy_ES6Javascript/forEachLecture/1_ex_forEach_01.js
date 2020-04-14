@@ -13,7 +13,6 @@ function handlePosts() {
 }
 
 //forEach
-
 function handlePosts() {
   var posts = [
     { id: 23, title: "Daily JS News" },
@@ -25,3 +24,21 @@ function handlePosts() {
     savePost(post);
   });
 }
+
+//다른 ver.
+var posts = [
+  { id: 23, title: "Daily JS News" },
+  { id: 52, title: "Code Refactor City" },
+  { id: 105, title: "The Brightest Ruby" },
+];
+
+function handlePosts() {
+  posts.forEach(function (post) {
+    savePost(post);
+  });
+}
+function savePost(post) {
+  console.log("save post " + post.title);
+}
+
+handlePosts();

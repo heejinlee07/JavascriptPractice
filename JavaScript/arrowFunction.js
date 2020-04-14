@@ -12,7 +12,7 @@ var bar = obj.f;
 console.log(bar());
 //프로퍼티 f에 할당된 함수를 일반 함수로서 호출
 
-console.log(new obj.f());
+console.log(new obj.f()); 
 //프로퍼티 f에 할당된 함수를 생성자 함수로서 호출
 
 //이렇게 객체에 바인딩된 함수가 constructor라면 protorype 프로퍼티에 바인딩된 프로토타입 객체를 생성한다는 의미.

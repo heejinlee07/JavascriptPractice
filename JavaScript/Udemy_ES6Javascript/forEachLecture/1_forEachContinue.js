@@ -20,27 +20,19 @@ forEach를 사용해서 numbers 안에 있는 element를 확인한다.
 */
 
 //print the sum variable
-sum;
-function handlePosts() {
-  var posts = [
-    { id: 23, title: "Daily JS News" },
-    { id: 52, title: "Code Refactor City" },
-    { id: 105, title: "The Brightest Ruby" },
-  ];
+console.log(sum);
 
-  for (var i = 0; i < posts.length; i++) {
-    savePost(posts[i]);
-  }
-}
+//TODO: WHY USE forEach?
 
-function handlePosts() {
-  var posts = [
-    { id: 23, title: "Daily JS News" },
-    { id: 52, title: "Code Refactor City" },
-    { id: 105, title: "The Brightest Ruby" },
-  ];
-
-  posts.forEach(function (post) {
-    savePost(post);
-  });
-}
+/**
+ * http request 요청과 같이 서버에 요청할 때 유용하다.
+ * Let's assume that clicking this checkbox here adds an e-mail to
+ * some like e-mails array like you know e-mails to be deleted or something like that.
+ * Then whenever a user clicks on the button we can run e-mails dot for each.
+ * So every e-mail that's in this array we should iterate over it
+ * and call this function delete e-mail passing an e-mail.
+ * TODO: delete all salected
+ * emails.forEach(function(email){
+ *  deleteEmail(email)
+ * })
+ */

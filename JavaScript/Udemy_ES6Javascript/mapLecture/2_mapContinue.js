@@ -12,6 +12,9 @@ var prices = cars.map(function (car) {
   return car.price;
 });
 
+//using arrow function
+var prices = cars.map((car) => car.price);
+
 console.log(prices);
 
 /*
