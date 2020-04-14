@@ -1,7 +1,7 @@
 //really hard - implementing pluck
 
-//pluck should accept an array and a string representing
-//a property name and return an array containing that property from each obj.
+//pluck should accept an array and a string representing a property name
+//and return an array containing that property from each obj.
 
 var paints = [{ color: "red" }, { color: "blue" }, { color: "yellow" }];
 

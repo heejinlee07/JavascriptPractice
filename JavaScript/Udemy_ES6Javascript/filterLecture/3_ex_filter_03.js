@@ -57,3 +57,5 @@ filterNumber([10, 69, 90], (element) => {
 });
 
 filterNumber([50, 100, 150], getElementOverHundred);
+
+var numbers = [10, 20, 30];

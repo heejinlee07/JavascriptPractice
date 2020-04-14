@@ -16,8 +16,9 @@ function commentsForPost(post, comments) {
 
 console.log(commentsForPost(post, comments));
 
-/*
-So whenever you're working on a client side application 
-you've got a list of records and you need to filter it somehow
-Definitely take a look at the filter helper.
-*/
+/**
+ * NOTE:
+ * So whenever you're working on a client side application
+ * you've got a list of records and you need to filter it somehow
+ * Definitely take a look at the filter helper.
+ */

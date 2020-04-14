@@ -1,4 +1,4 @@
-//filter the array of users, only returning users who have adiml level access.
+//filter the array of users, only returning users who have admin level access.
 
 var users = [
   { id: 1, admin: true },

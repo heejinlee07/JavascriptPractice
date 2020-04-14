@@ -4,8 +4,6 @@ const output = move(numbers, 0, 1);
 
 console.log(output);
 
-//TODO: 강의 다시보기
-
 function move(array, index, offset) {
   const position = index + offset;
   if (position >= array.length || position < 0) {

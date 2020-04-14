@@ -1,5 +1,5 @@
 // 웹사이트에서 특정 상품리스트를 sort하거나 filter하고 싶다면? filter
-//각각의 객체는 단일 상품의 이름과 타입을 설명한다.
+// 각각의 객체는 단일 상품의 이름과 타입을 설명한다.
 
 var products = [
   { name: "cucumber", type: "vegatable" },
@@ -26,18 +26,19 @@ console.log(filteredProducts);
 원본 배열은 mutating되지 않고 그대로 보존됨.
 */
 
-//하지만 for문은 복잡하니, filter를 이용하면 간결하면서도 원본배열을
+//for문은 복잡하니, filter를 이용하면 간결하면서도 원본배열을
 //손상시키지 않는 새로운 배열을 만들 수 있다.
 
 var filteredProducts2 = products.filter(function (product) {
   /*
+  if조건문은 굳이 써주지 않아도 된다.
 if (product.type ==='vegatable') {
   return true;
 }
 */
   return product.type === "vegatable";
   //truthy인지 falsy인지 평가하여 즉시 return
-  //return은 절대 생략하지 않음. 생략시 빈 객체가 반환됨.
+  //REMIND:return은 절대 생략하지 않음. 생략시 빈 객체가 반환됨.
 });
 
 console.log(filteredProducts2);
