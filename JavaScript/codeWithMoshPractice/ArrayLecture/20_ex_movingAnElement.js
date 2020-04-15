@@ -15,3 +15,12 @@ function move(array, index, offset) {
   output.splice(position, 0, element);
   return output;
 }
+
+//참고
+let array = [1, 2, 3, 4];
+
+let temp = array[0];
+array[0] = array[3];
+array[3] = temp;
+
+console.log(array);
