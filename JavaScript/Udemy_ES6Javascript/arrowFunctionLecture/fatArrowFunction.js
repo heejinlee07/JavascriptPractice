@@ -55,7 +55,7 @@ team.teamSummary();
  * lexical this: the word lexical means the placement of this term
  * depends on how it's interpreted or how it's evaluated.
  * So depending on where we are placing the word this it will change when we're using a fat arrow function
- * when we use a federal function and make reference to this inside of it.
+ * when we use a fat arrow function and make reference to this inside of it.
  * 'This' keyword is automatically set equal to this in the surrounding context which in this case is
  * equal to team.
  */
