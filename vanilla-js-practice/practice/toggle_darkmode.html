@@ -1,14 +1,6 @@
 <!-- 웹앱이 다크 모드를 지원할 수 있도록 CSS를 수정 해 주세요. 또한 사용자가 테마를
 토글할 수 있어야 합니다.  -->
 
-<!-- 제공되는 스타일시트 하단에 prefer-color-scheme과
-관련하여 주석 처리된 내용이 있었다. 주석을 해제하고 시스템 테마에 알맞게
-스타일링을 진행하면 된다. 다만 내 맥북에서는 이상하게 다크 모드인데도 불구하고
-정상적으로 감지가 되지 않아서 고생좀 했다. 토글할 수 있다는 말은, 자바스크립트로
-상태를 관리할 수 있어야 한다는 것이기 때문에 window.matchMedia로 초기 상태값을
-확인한 뒤 토글할 수 있도록 컴포넌트를 추가했다. 스타일시트에 클래스를 정의하고
-변경하는 방법을 고민했다가, CSS 변수를 이용하여 구현했다. -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,6 +21,54 @@
         width: 200px;
         text-align: center;
         cursor: pointer;
+        margin-bottom: 50px;
+      }
+      body {
+        background-color: #ffffff;
+      }
+
+      h1 {
+        color: #000000;
+      }
+
+      .themed {
+        display: block;
+        width: 10em;
+        height: 10em;
+        background: #000000;
+        color: #ffffff;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #000000;
+          color: #ffffff;
+        }
+        .themed {
+          background: #ffffff;
+          color: #000000;
+        }
+      }
+      .changed-btn {
+        border: 1px solid red;
+        border-radius: 5px;
+        width: 200px;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 50px;
+      }
+
+      .changed-color {
+        display: block;
+        width: 10em;
+        height: 10em;
+        background: red;
+        color: #ffffff;
+      }
+
+      .darkmode-color {
+        background: blue;
+        color: #ffffff;
       }
     </style>
   </head>
@@ -36,8 +76,14 @@
     <h2>window.onresize / window.matchMedia</h2>
     <div class="test">test</div>
     <hr />
-    <h2>darkmode toggle</h2>
+    <h2>darkmode detect</h2>
+    <h3>use matchMeadia</h3>
     <div class="toggle-btn">darkmode</div>
+    <div class="themed">Theme</div>
+    <hr />
+    <h3>darkmode toggle</h3>
+    <div class="changed-btn" onClick="changed()">changed box color</div>
+    <div class="changed-color">changed box color</div>
     <script>
       // practice: onresize, window.matchMedia
       // TASK. throttle/debounce 적용해보기
@@ -56,9 +102,24 @@
 
       //darkmode
       const $toggleBtn = document.querySelector(".toggle-btn");
-      $toggleBtn.onclick = (e) => console.log("hi");
+      $toggleBtn.onclick = (e) => {
+        if (window.matchMedia("(prefers-color-scheme: Dark)").matches) {
+          console.log(document.body);
+        }
+      };
 
       // task. https://developer.mozilla.org/ko/docs/Web/CSS/@media/prefers-color-scheme
+
+      // const prefersDark =
+      //   window.matchMedia &&
+      //   window.matchMedia("(prefers-color-scheme: Dark)").matches;
+      // console.log(prefersDark);
+
+      const $changedBtn = document.querySelector(".changed-btn");
+      const $changedColor = document.querySelector(".changed-color");
+      const changed = () => {
+        $changedColor.classList.toggle("darkmode-color");
+      };
     </script>
   </body>
 </html>
