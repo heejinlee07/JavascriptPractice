@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Stop watch</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
+
+      .stop-watch {
+        font-family: "Source Code Pro", monospace;
+        text-align: center;
+        font-size: 3em;
+        padding: 30px;
+      }
+
+      .control {
+        width: 300px;
+        padding: 5px;
+        margin-top: 15px;
+        font-size: 36px;
+        font-weight: bold;
+        border: 2px solid #f44336;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .control:hover {
+        background: #f44336;
+        color: aliceblue;
+      }
+    </style>
+    <title>Stop watch</title>
+  </head>
+  <body>
+    <div class="stop-watch">
+      <div class="display">00:00:00</div>
+      <button class="control">Start</button>
+    </div>
+    <script>
+      const $control = document.querySelector(".control");
+      const $timeDisplay = document.querySelector(".display");
+
+      //TODO:setInterval
+      //조건에 맞춰 리셋
+      //초:0-99 일떄 찍히다가 0
+
+      //textcontent
+
+      /**
+       * ▼ setInterval() 함수로 넘기는 인자 정보는 2개입니다.
+       * 첫 번째 인자는 일정한 시간 간격으로 반복 실행하고자 하는 코드정보입니다.
+       * 두 번째는 시간 정보로 ms 단위로 설정합니다.
+       */
+
+      //FIXME: 미완성
+      let num = 0;
+      let minutes = 0;
+      let second = 0;
+      let mSecond = 0;
+
+      function counters() {
+        let timeCheck = setInterval(function () {
+          mSecond++;
+          console.log(second);
+          console.log(minutes);
+          if (mSecond === 100) {
+            second += 1;
+            mSecond = 0;
+          } else if (second === 60) {
+            minutes += 1;
+            second = 0;
+          }
+          $timeDisplay.textContent = `${
+            minutes < 10 ? "0" + minutes : minutes
+          }:${second < 10 ? "0" + second : second}:${
+            mSecond < 10 ? "0" + mSecond : mSecond
+          }`;
+        }, 10);
+      }
+
+      //clearInterval(timecheck);
+
+      $control.onclick = () => {
+        counters();
+      };
+
+      $control.onclick = (e) => {};
+    </script>
+  </body>
+</html>
