@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>parentNode</h2>
+    <p>
+      부모 노드를 탐색하려면 Node.prototype.parentNode 프로퍼티를 사용한다.
+      텍스트 노드는 DOM 트리의 최종단 노드인 리프 노드(leaf node)이므로 부모
+      노드가 텍스트 노드인 경우는 없다.
+    </p>
+    <hr />
+    <ul id="fruits">
+      <li class="apple">Apple</li>
+      <li class="banana">Banana</li>
+      <li class="orange">Orange</li>
+    </ul>
+    <div class="parent">
+      <div class="child1">child1</div>
+      <div class="child2">child2</div>
+      <div class="child3">child3</div>
+    </div>
+    <script>
+      // 노드 탐색의 기점이 되는 .banana 요소 노드를 취득한다.
+      const $banana = document.querySelector(".banana");
+      const $parent = document.querySelector(".parent");
+      const $child1 = document.querySelector(".child1");
+      const $child2 = document.querySelector(".child2");
+      const $child3 = document.querySelector(".child3");
+      $parent.innerHTML += '<div class="child4">child4</div>';
+
+      // .banana 요소 노드의 부모 노드를 탐색한다.
+      console.log($banana.parentNode); // ul#fruits
+      console.log($child1.parentNode);
+      console.log($child2.parentNode);
+      console.log($parent);
+    </script>
+  </body>
+</html>

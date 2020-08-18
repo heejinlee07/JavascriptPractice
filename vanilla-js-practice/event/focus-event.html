@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>focus: HTML 요소가 포커스를 받았을 때 (버블링되지 않는다) 이벤트 발생</p>
+    <p>blur: HTML 요소가 포커스를 잃었을 때 (버블링되지 않는다) 이벤트 발생</p>
+    <p>focusin: HTML 요소가 포커스를 받았을 때 (버블링된다) 이벤트 발생</p>
+    <p>focusout: HTML 요소가 포커스를 잃었을 때 (버블링된다) 이벤트 발생</p>
+    <form id="form">
+      <input type="text" placeholder="text input" />
+      <input type="password" placeholder="password" />
+    </form>
+    <script>
+      const password = document.querySelector('input[type="password"]');
+
+      password.addEventListener("focus", (event) => {
+        event.target.style.background = "pink";
+      });
+
+      password.addEventListener("blur", (event) => {
+        event.target.style.background = "";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      Element.prototype.matches 메서드는 인수로 전달한 CSS 선택자를 통해 특정
+      요소 노드를 취득할 수 있는지 확인한다.
+    </h2>
+    <hr />
+    <ul id="fruits">
+      <li class="apple">Apple</li>
+      <li class="banana">Banana</li>
+      <li class="orange">Orange</li>
+    </ul>
+  </body>
+  <script>
+    const $apple = document.querySelector(".apple");
+
+    // $apple 노드는 '#fruits > li.apple'로 취득할 수 있다.
+    console.log($apple.matches("#fruits > li.apple")); // true
+
+    // $apple 노드는 '#fruits > li.banana'로 취득할 수 없다.
+    console.log($apple.matches("#fruits > li.banana")); // false
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article>
+      form이 제출될 때 이벤트가 발생한다.
+    </article>
+    <form id="form">
+      <label>Test field: <input type="text" /></label>
+      <br /><br />
+      <button type="submit">Submit form</button>
+    </form>
+    <p id="log"></p>
+    <script>
+      function logSubmit(event) {
+        log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+        event.preventDefault();
+      }
+
+      const form = document.getElementById("form");
+      const log = document.getElementById("log");
+      form.addEventListener("submit", logSubmit);
+    </script>
+  </body>
+</html>

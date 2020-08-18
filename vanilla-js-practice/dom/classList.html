@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: antiquewhite;
+      }
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>classList</h2>
+    <p>
+      class 어트리뷰트에 대응하는 DOM 프로퍼티는 class가 아니라 className과
+      classList다. classList는 class 어트리뷰트의 정보를 담은 DOMTokenList
+      객체를 반환한다. DOMTokenList 객체는 class 어트리뷰트의 정보를 나타내는
+      컬렉션 객체로서 유사 배열 객체이면서 이터러블이다.
+    </p>
+    <hr />
+    <div class="box red">Hello World</div>
+    <hr />
+    <ul>
+      유용한 메소드
+      <li>
+        replace 메서드는 class 어트리뷰트에서 첫 번째 인수로 전달한 문자열을 두
+        번째 인수로 전달한 문자열로 변경한다.
+      </li>
+      <li>
+        add 메서드는 인수로 전달한 1개 이상의 문자열을 class 어트리뷰트 값으로
+        추가한다.
+      </li>
+      <li>
+        remove 메서드는 인수로 전달한 1개 이상의 문자열과 일치하는 클래스를
+        class 어트리뷰트에서 삭제한다. 인수로 전달한 문자열과 일치하는 클래스가
+        class 어트리뷰트에 없으면 에러없이 무시된다.
+      </li>
+      <li>
+        iitem 메서드는 인수로 전달한 index에 해당하는 클래스를 class
+        어트리뷰트에서 반환한다. 예를 들어, index가 0이면 첫 번째 클래스를
+        반환하고 index가 1이면 두 번째 클래스를 반환한다.
+      </li>
+      <li>
+        contains 메서드는 인수로 전달한 문자열과 일치하는 클래스가 class
+        어트리뷰트에 포함되어 있는지 확인한다.
+      </li>
+      <li>
+        toggle 메서드는 class 어트리뷰트에 인수로 전달한 문자열과 일치하는
+        클래스가 존재하면 제거하고, 존재하지 않으면 추가한다.
+      </li>
+    </ul>
+    <script>
+      const $box = document.querySelector(".box");
+
+      // .box 요소의 class 어트리뷰트 정보를 담은 DOMTokenList 객체를 취득
+      console.log($box.classList);
+      // DOMTokenList(2) [length: 2, value: "box blue", 0: "box", 1: "blue"]
+
+      // .box 요소의 class 어트리뷰트 값 중에서 'red'만 'blue'로 변경
+      $box.classList.replace("red", "blue");
+      console.log($box.classList);
+
+      // add
+      $box.classList.add("foo"); // -> class="box blue foo"
+      $box.classList.add("bar", "baz"); // -> class="box blue foo bar baz"
+      console.log("add", $box.classList);
+
+      // remove
+      $box.classList.remove("foo"); // -> class="box blue bar baz"
+      $box.classList.remove("bar", "baz"); // -> class="box blue"
+      $box.classList.remove("x"); // -> class="box blue"
+      console.log("remove", $box.classList);
+
+      //item
+      $box.classList.item(0); // -> "box"
+      $box.classList.item(1); // -> "blue"
+      console.log("item", $box.classList);
+
+      //contains
+      $box.classList.contains("box"); // -> true
+      $box.classList.contains("red"); // -> false
+      console.log("contains red", $box.classList.contains("red"));
+
+      //toggle
+      $box.classList.toggle("foo"); // -> class="box blue foo"
+      console.log("toggle", $box.classList);
+
+      $box.classList.toggle("foo"); // -> class="box blue"
+      console.log("toggle", $box.classList);
+
+      $box.classList.toggle("bar"); // -> class="box blue bar"
+      console.log("toggle", $box.classList);
+    </script>
+  </body>
+</html>

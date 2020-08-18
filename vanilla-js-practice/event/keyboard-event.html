@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      문자 키를 눌렀을 때 연속적으로 발생한다. * control, option, shift, tab,
+      delete, 방향 키 등을 눌렸을 때는 발생하지 않고 문자, 숫자, 특수 문자 키를
+      눌렸을 때만 발생한다.
+    </p>
+    <button class="keypress">keypress</button>
+    <hr />
+
+    <p>
+      모든 키를 눌렀을 때 발생한다. * control, option, shift, tab, delete, 방향
+      키와 문자, 숫자, 특수 문자 키를 눌렀을 때 발생한다. 단, 문자, 숫자, 특수
+      문자 키를 눌렀을 때는 연속적으로 발생하지만 그 외의 키를 눌렸을 때는 한
+      번만 발생한다.
+    </p>
+    <button class="keydown">keydown</button>
+    <hr />
+
+    <p>
+      누르고 있던 키를 놓았을 때 한 번만 발생한다. * keydown 이벤트와 마찬가지로
+      control, option, shift, tab, delete, 방향 키와 문자, 숫자, 특수 문자 키를
+      놓았을 때 발생한다.
+    </p>
+    <button class="keyup">keyup</button>
+
+    <script>
+      const $keypress = document.querySelector(".keypress");
+      $keypress.onkeypress = () => {
+        console.log("use keypress");
+      };
+
+      const $keydown = document.querySelector(".keydown");
+      $keydown.onkeydown = () => {
+        alert("hi");
+      };
+
+      const $keyup = document.querySelector(".keyup");
+      $keyup.onkeyup = () => {
+        alert("hi");
+      };
+    </script>
+  </body>
+</html>
