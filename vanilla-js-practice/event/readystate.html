@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Document.readyState</h2>
+    <p>
+      document의 로딩 상태를 확인할 수 있다. Document.readyState 속성 값이 바뀔
+      때 readystatechange 이벤트가 document에서 일어난다.
+    </p>
+    <p>syntax : var string = document.readyState</p>
+    <ul>
+      values - 3가지 상태
+      <li>loading : document 로딩 중.</li>
+      <li>
+        interactive : 문서의 로딩은 끝이 나고 해석 중 이지만 images,
+        stylesheets, frames과 같은 하위 자원들은 로딩되고 있는 상태이다.
+      </li>
+      <li>
+        complete : 문서와 모든 하위 자원들의 로드가 완료된 상태이다. 이 상태는
+        load 이벤트가 발생되기 직전 상태이다.
+      </li>
+    </ul>
+  </body>
+</html>

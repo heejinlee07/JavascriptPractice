@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .pre-code {
+        border: 1px solid green;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>DOMContentLoaded</h2>
+    <h3>기본사용법</h3>
+    <pre class="pre-code">
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+    });
+    </pre>
+    <h3>
+      로딩이 이미 완료되었는지 확인할 것.DOMContentLoaded 스크립트가 실행되기
+      전에 실행될 수 있으므로 리스너를 추가하기 전에 확인필요.
+    </h3>
+    <pre class="pre-code">
+    function doSomething() {
+      console.info('DOM loaded');
+    }
+    
+    if (document.readyState === 'loading') {  // Loading hasn't finished yet
+      document.addEventListener('DOMContentLoaded', doSomething);
+    } else {  // `DOMContentLoaded` has already fired
+      doSomething();
+    }
+  </pre
+    >
+    <p>
+      DOMContentLoaded이벤트는 스타일 시트, 이미지 및 서브 프레임이로드를 완료
+      할 때까지 기다리지 않고 초기 HTML 문서가 완전히로드되고 구문 분석되면
+      발생합니다.
+      <a
+        href="https://developer.mozilla.org/ko/docs/Web/Events/DOMContentLoaded"
+        >DOMContentLoaded</a
+      >
+      <a
+        href="https://developer.mozilla.org/ko/docs/Web/API/Document/DOMContentLoaded_event"
+        >DOMContentLoaded_event</a
+      >
+    </p>
+    <hr />
+    <h2>DOMContentLoaded 예제</h2>
+    <div class="controls">
+      <button id="reload" type="button">Reload</button>
+    </div>
+
+    <div class="event-log">
+      <label>Event log:</label>
+      <textarea
+        readonly
+        class="event-log-contents"
+        rows="8"
+        cols="30"
+      ></textarea>
+    </div>
+    <script>
+      const log = document.querySelector(".event-log-contents");
+      const reload = document.querySelector("#reload");
+
+      reload.addEventListener("click", () => {
+        log.textContent = "";
+        window.setTimeout(() => {
+          window.location.reload(true);
+        }, 200);
+      });
+
+      window.addEventListener("load", (event) => {
+        log.textContent = log.textContent + "load\n";
+      });
+
+      document.addEventListener("readystatechange", (event) => {
+        log.textContent =
+          log.textContent + `readystate: ${document.readyState}\n`;
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        log.textContent = log.textContent + `DOMContentLoaded\n`;
+      });
+    </script>
+  </body>
+</html>

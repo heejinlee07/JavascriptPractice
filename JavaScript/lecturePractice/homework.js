@@ -116,6 +116,8 @@ for (var i = 0; i < line; i++) {
 개행문자(‘\n’)를 사용하여 개행한다. 완성된 문자열의 마지막은 
 개행문자(‘\n’)로 끝나도 관계없다.*/
 
+var str = "";
+
 for (var i = 5; i > 0; i--) {
   var blank = 5 - i;
   console.log(" ".repeat(blank) + "*".repeat(i));
@@ -125,6 +127,8 @@ for (var i = 5; i > 0; i--) {
 /*다음을 참고하여 *(별)로 트리를 문자열로 완성하라. 
 개행문자(‘\n’)를 사용하여 개행한다. 완성된 문자열의 마지막은 
 개행문자(‘\n’)로 끝나도 관계없다.*/
+
+var str = "";
 
 for (var i = 5; i > 0; i--) {
   var blank = 5 - i;
@@ -136,6 +140,8 @@ for (var i = 5; i > 0; i--) {
 개행문자(‘\n’)를 사용하여 개행한다. 완성된 문자열의 마지막은 
 개행문자(‘\n’)로 끝나도 관계없다.*/
 
+var str = "";
+
 for (var i = 0; i <= 5; i++) {
   var blank = 5 - i;
   console.log(" ".repeat(blank) + "*".repeat(i));
@@ -143,15 +149,18 @@ for (var i = 0; i <= 5; i++) {
 
 // 15. 정삼각형 출력하기
 
+var str = "";
+
 for (var i = 0; i < 5; i++) {
   var blank = 5 - i;
   console.log(" ".repeat(blank) + "*".repeat(2 * i + 1) + " ".repeat(blank));
 }
 
 // 16. 역정삼각형 출력하기
+
 var str = "";
+
 for (var i = 5; i > 0; i--) {
   var blank = 5 - i;
-  str += " ".repeat(blank) + "*".repeat(2 * i - 1) + " ".repeat(blank) + "\n";
+  console.log(" ".repeat(blank) + "*".repeat(2 * i - 1) + " ".repeat(blank));
 }
-console.log(str);

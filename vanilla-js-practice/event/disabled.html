@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      input[type="text"]:disabled {
+        background: #ccc;
+      }
+      .pre-code {
+        border: 1px solid green;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>:disabled</h2>
+    <p>
+      CSS :disabled 의사 클래스는 모든 비활성 요소를 나타냅니다. 비활성 요소란
+      활성(선택, 클릭, 입력 등등)하거나 포커스를 받을 수 없는 요소를 말합니다.
+      반대 상태인 활성 요소도 존재합니다.
+    </p>
+    <pre class="pre-code">
+      /* 모든 비활성 input 태그 선택 */ 
+      input:disabled { 
+        background: #ccc; 
+      }
+    </pre>
+    <hr />
+    <h2>DOMContentLoaded</h2>
+    <h3>기본사용법</h3>
+    <pre class="pre-code">
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+    });
+    </pre>
+    <h3>
+      로딩이 이미 완료되었는지 확인할 것.DOMContentLoaded 스크립트가 실행되기
+      전에 실행될 수 있으므로 리스너를 추가하기 전에 확인필요.
+    </h3>
+    <pre class="pre-code">
+    function doSomething() {
+      console.info('DOM loaded');
+    }
+    
+    if (document.readyState === 'loading') {  // Loading hasn't finished yet
+      document.addEventListener('DOMContentLoaded', doSomething);
+    } else {  // `DOMContentLoaded` has already fired
+      doSomething();
+    }
+  </pre
+    >
+    <p>
+      DOMContentLoaded이벤트는 스타일 시트, 이미지 및 서브 프레임이로드를 완료
+      할 때까지 기다리지 않고 초기 HTML 문서가 완전히로드되고 구문 분석되면
+      발생합니다.
+      <a
+        href="https://developer.mozilla.org/ko/docs/Web/Events/DOMContentLoaded"
+        >DOMContentLoaded</a
+      >
+      <a
+        href="https://developer.mozilla.org/ko/docs/Web/API/Document/DOMContentLoaded_event"
+        >DOMContentLoaded_event</a
+      >
+    </p>
+
+    <hr />
+    <form action="#">
+      <fieldset id="shipping">
+        <legend>배송지</legend>
+        <input type="text" placeholder="이름" />
+        <input type="text" placeholder="주소" />
+        <input type="text" placeholder="우편번호" />
+      </fieldset>
+      <br />
+      <fieldset id="billing">
+        <legend>청구지</legend>
+        <label for="billing-checkbox">배송지와 동일:</label>
+        <input type="checkbox" id="billing-checkbox" checked />
+        <br />
+        <input type="text" placeholder="이름" disabled />
+        <input type="text" placeholder="주소" disabled />
+        <input type="text" placeholder="우편번호" disabled />
+      </fieldset>
+    </form>
+
+    <script>
+      // 페이지 로딩이 끝날 때까지 기다림
+      document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+          // `change` 이벤츠 수신기를 체크박스에 부착
+          document.getElementById("billing-checkbox").onchange = toggleBilling;
+        },
+        false
+      );
+
+      function toggleBilling() {
+        // 청구지 텍스트 입력 칸을 모두 선택
+        var billingItems = document.querySelectorAll(
+          '#billing input[type="text"]'
+        );
+
+        // 하나씩 토글
+        for (var i = 0; i < billingItems.length; i++) {
+          billingItems[i].disabled = !billingItems[i].disabled;
+        }
+      }
+    </script>
+  </body>
+</html>

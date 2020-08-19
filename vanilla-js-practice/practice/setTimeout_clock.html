@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="clock"></p>
+    <script>
+      function displayTime() {
+        let date = new Date();
+        console.log("use newdate", date);
+        let time = date.toLocaleTimeString();
+        console.log("use toLocaltTimeString", time);
+        document.querySelector(".clock").textContent = time;
+        console.log("use textContent", time);
+      }
+
+      displayTime();
+      const createClock = setInterval(displayTime, 1000);
+      // clearInterval 사용시 setInterval 작업 취소
+      clearInterval(createClock);
+    </script>
+  </body>
+</html>

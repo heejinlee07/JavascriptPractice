@@ -6,15 +6,10 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="box">test</div>
     <script>
-      var str = "hello world!";
-      var cnt = 0;
-
-      for (var i = 0; i < str.length; i++) {
-        if (str[i] === "l") cnt++;
-      }
-      
-      console.log(cnt);
+      const $box = document.querySelector(".box");
+      $box.textContent = "hello"; //접근자 프로퍼티
     </script>
   </body>
 </html>

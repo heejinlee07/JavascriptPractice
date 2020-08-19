@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Our superheroes</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Faster+One"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <p>
+      JSON을 가져오기 위해서는, XMLHttpRequest (때론 XHR)로 불리는 API를
+      사용하면 된다.
+    </p>
+    <header></header>
+
+    <section></section>
+
+    <script>
+      const header = document.querySelector("header");
+      const section = document.querySelector("section");
+
+      // Task.
+      // 변수로 둘 JSON의 URL을 가져와야 합니다.
+      var requestURL =
+        "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+      // 요청을 만들기 위해, 우리는 new 키워드를 이용하여 XMLHttpRequest 생성자로부터 새로운 request 인스턴스를 생성해야 합니다.
+      var request = new XMLHttpRequest();
+      // open() 메소드를 사용해 새로운 요청을 만듭니다.
+      request.open("GET", requestURL);
+      /*note.
+       * 요청 시 최소 두 개의 매개변수를 가집니다. 다른 선택적 매개변수도 가능
+       * http메소드: 네트워크 요청 만들 때 사용.(GET)
+       * URL: 요청을 보낼 곳.
+       */
+
+      // XHR로 하여금 서버가 JSON 데이터를 반환할 것이며, 자바스크립트 객체로서 변환될 것이라는 걸 알게 하기 위해 설정
+      request.responseType = "json";
+      // 요청 보냄.
+      request.send();
+
+      // 서버의 응답을 기다리고, 그것의 처리까지와 관련된 섹션
+      // onload는 응답이 성공적으로 돌아왔을 때만 작동하므로 request.response가 확실히 가능하다는 것을 보장.
+      request.onload = function () {
+        // 요청에 대한 응답을 superHeroes에 저장. JSON 데이터에 기반한 자바스크립트 객체를 포함하고 있다.
+        var superHeroes = request.response;
+        console.log(superHeroes);
+        // 두 개의 함수를 호출하여 이 객체를 전달한다.
+        populateHeader(superHeroes);
+        showHeroes(superHeroes);
+      };
+
+      // 헤더 조작
+      function populateHeader(jsonObj) {
+        var myH1 = document.createElement("h1");
+        myH1.textContent = jsonObj["squadName"];
+        console.log(jsonObj["squadName"]);
+        header.appendChild(myH1);
+
+        var myPara = document.createElement("p");
+        myPara.textContent =
+          "Hometown: " +
+          jsonObj["homeTown"] +
+          " // Formed: " +
+          jsonObj["formed"];
+        header.appendChild(myPara);
+      }
+
+      // 슈퍼히어로 카드를 생성하고 보여줄 함수
+      // 매개변수 jsonObj: 이 자바스크립트 객체가 JSON으로 부터 생겨났다는 걸 상기시켜 주기 위한 이름
+      function showHeroes(jsonObj) {
+        // jsonObj에 member 프로퍼티를 저장. 이 배열은 각 히어로에 대한 정보를 가진 여러 개의 객체를 포함.
+        var heroes = jsonObj["members"];
+        console.log(jsonObj["members"]);
+        // 배열 내의 각 객체의 반복 실행.
+        for (var i = 0; i < heroes.length; i++) {
+          var myArticle = document.createElement("article");
+          var myH2 = document.createElement("h2");
+          var myPara1 = document.createElement("p");
+          var myPara2 = document.createElement("p");
+          var myPara3 = document.createElement("p");
+          var myList = document.createElement("ul");
+
+          myH2.textContent = heroes[i].name;
+          myPara1.textContent = "Secret identity: " + heroes[i].secretIdentity;
+          myPara2.textContent = "Age: " + heroes[i].age;
+          myPara3.textContent = "Superpowers:";
+
+          // superPowers 라는 새로운 변수 안에 powers프로퍼티를 저장해 주세요. 이것은 현재 히어로의 초능력(superpower)을 열거한 배열을 포함
+          // 요소가 추가되어 지는 순서가 중요해요.왜냐하면 HTML 내에 보여질 거거든요.
+          var superPowers = heroes[i].powers;
+          console.log(heroes[i].powers);
+          for (var j = 0; j < superPowers.length; j++) {
+            var listItem = document.createElement("li");
+            listItem.textContent = superPowers[j];
+            myList.appendChild(listItem);
+          }
+
+          myArticle.appendChild(myH2);
+          myArticle.appendChild(myPara1);
+          myArticle.appendChild(myPara2);
+          myArticle.appendChild(myPara3);
+          myArticle.appendChild(myList);
+
+          section.appendChild(myArticle);
+        }
+      }
+    </script>
+  </body>
+</html>
