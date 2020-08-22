@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #fruits {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #fruits li {
+        width: 100px;
+        cursor: pointer;
+      }
+
+      #fruits .active {
+        color: red;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>
+      이벤트 위임(Event delegation)은 여러 개의 하위 DOM 요소에 각각 이벤트
+      핸들러를 등록하는 대신 하나의 상위 DOM 요소에 이벤트 핸들러를 등록하는
+      방법을 말한다.
+    </h2>
+    <h3>
+      이 예제의 경우 아래처럼 li 요소마다 이벤트 핸들러를 등록해야한다. 지금은
+      li 개수가 적어서 괜찮지만 100개 이상된다고 생각하면 성능 저하의 우려가
+      있고, 유지보수에도 부적합해진다.
+    </h3>
+    <pre>
+      // 모든 내비게이션 아이템(li 요소)에 이벤트 핸들러를 등록한다.
+      document.getElementById("apple").onclick = activate;
+      document.getElementById("banana").onclick = activate;
+      document.getElementById("orange").onclick = activate;
+    </pre>
+    <nav>
+      <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="orange">Orange</li>
+      </ul>
+    </nav>
+    <div>선택된 내비게이션 아이템: <em class="msg">apple</em></div>
+    <script>
+      const $fruits = document.getElementById("fruits");
+      const $msg = document.querySelector(".msg");
+
+      // 사용자 클릭에 의해 선택된 내비게이션 아이템(li 요소)에 active 클래스를 추가하고
+      // 그 외의 모든 내비게이션 아이템의 active 클래스를 제거한다.
+      function activate({ target }) {
+        [...$fruits.children].forEach(($fruit) => {
+          $fruit.classList.toggle("active", $fruit === target);
+          $msg.textContent = target.id;
+        });
+      }
+
+      // 모든 내비게이션 아이템(li 요소)에 이벤트 핸들러를 등록한다.
+      document.getElementById("apple").onclick = activate;
+      document.getElementById("banana").onclick = activate;
+      document.getElementById("orange").onclick = activate;
+    </script>
+  </body>
+</html>

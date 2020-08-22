@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>
+      e.stopPropagation();를 사용햐면 버블링이 되지 않는다.
+      e.preventDefault();는 a 태그처럼 클릭 이벤트 외에 별도의 브라우저
+      동작(Ex.href)을 막기 위해 사용
+    </h2>
+    <div id="root">
+      <ul id="list">
+        <li id="item-1">
+          Click Me!
+        </li>
+      </ul>
+    </div>
+    <script>
+      const list = document.querySelector("#list");
+      const item = document.querySelector("#item-1");
+
+      list.addEventListener("click", (e) => {
+        console.log("Clicked List");
+      });
+
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("Clicked Item");
+      });
+    </script>
+  </body>
+</html>
